@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 
 import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-
-import { makeExecutableSchema, addMockFunctionsToSchema, } from 'graphql-tools';
-import { typeDefs } from './schema';
-import MockLink from './MockLink';
+import { HttpLink } from "apollo-link-http";
 
 import { ApolloProvider } from 'react-apollo';
 import UsersList from './UsersList';
@@ -13,10 +10,7 @@ import UsersList from './UsersList';
 import logo from './logo.svg';
 import './App.css';
 
-const schema = makeExecutableSchema({ typeDefs });
-addMockFunctionsToSchema({ schema });
-
-const link = new MockLink({ schema });
+const link = new HttpLink({ uri: 'http://localhost:4000/graphql' });
 const cache = new InMemoryCache();
 const client = new ApolloClient({ link, cache });
 

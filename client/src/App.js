@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-import gql from 'graphql-tag';
 
 import { makeExecutableSchema, addMockFunctionsToSchema, } from 'graphql-tools';
 import { typeDefs } from './schema';

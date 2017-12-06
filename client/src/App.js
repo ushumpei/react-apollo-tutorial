@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 
 import { ApolloClient } from 'apollo-client';
-import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import gql from 'graphql-tag';
+
+import { makeExecutableSchema, addMockFunctionsToSchema, } from 'graphql-tools';
+import { typeDefs } from './schema';
+import MockLink from './MockLink';
 
 import logo from './logo.svg';
 import './App.css';
 
-const link = new HttpLink();
+const schema = makeExecutableSchema({ typeDefs });
+addMockFunctionsToSchema({ schema });
+
+const link = new MockLink({ schema });
 const cache = new InMemoryCache();
 const client = new ApolloClient({ link, cache });
 

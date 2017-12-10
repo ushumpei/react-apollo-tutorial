@@ -19,4 +19,6 @@ export const usersListQuery = gql`query {
   }
 }`;
 
-export default graphql(usersListQuery)(UsersList);
+export default graphql(usersListQuery, {
+  options: { pollInterval: 5000 },
+})(UsersList);

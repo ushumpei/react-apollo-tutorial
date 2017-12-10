@@ -6,6 +6,7 @@ import { HttpLink } from "apollo-link-http";
 
 import { ApolloProvider } from 'react-apollo';
 import UsersList from './UsersList';
+import AddUser from './AddUser';
 
 import logo from './logo.svg';
 import './App.css';
@@ -26,6 +27,7 @@ class App extends Component {
           <p className="App-intro">
             To get started, edit <code>src/App.js</code> and save to reload.
           </p>
+          <AddUser />
           <UsersList />
         </div>
       </ApolloProvider>
